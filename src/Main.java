@@ -5,40 +5,38 @@ import product.ProductController;
 import product.ProductModel;
 
 public class Main {
-        private int id = 0;
+        private static int id = 0;
 
         public static void main(String[] args) {
-                Main mainInstance = new Main();
-                mainInstance.createProduct();
+                createProduct();
         }
 
-        void createProduct() {
+        private static void createProduct() {
                 ProductController controller = new ProductController();
                 try {
-                        this.setId(this.id + 1);
-                        ProductModel newProduct = new ProductModel(this.getId());
-                        ;
+                        setId(id + 1);
+                        ProductModel productOne = new ProductModel(getId());
 
-                        newProduct.setName("Produto 1");
-                        newProduct.setPriceInCents(500);
-                        newProduct.setStock(25);
-                        controller.create(newProduct);
-
-                        controller.read();
-
-                        controller.retrievePrice(this.getId());
-
-                        this.setId(this.id + 1);
-                        ProductModel novoProduto = new ProductModel(this.getId());
-
-                        novoProduto.setName("Produto 1");
-                        novoProduto.setPriceInCents(400);
-                        novoProduto.setStock(50);
-                        controller.create(novoProduto);
+                        productOne.setName("Produto 1");
+                        productOne.setPriceInCents(500);
+                        productOne.setStock(25);
+                        controller.create(productOne);
 
                         controller.read();
 
-                        controller.retrievePrice(this.getId());
+                        controller.retrievePrice(getId());
+
+                        setId(id + 1);
+                        ProductModel productTwo = new ProductModel(getId());
+
+                        productTwo.setName("Produto 1");
+                        productTwo.setPriceInCents(400);
+                        productTwo.setStock(50);
+                        controller.create(productTwo);
+
+                        controller.read();
+
+                        controller.retrievePrice(getId());
                 } catch (UniqueNameException | NegativePriceException | NotFoundException e) {
                         System.err.println("Error creating product: " + e.getMessage());
                 } catch (Exception e) {
@@ -46,12 +44,12 @@ public class Main {
                 }
         }
 
-        void setId(int newId) {
-                this.id = newId;
+        private static void setId(int newId) {
+                id = newId;
         }
 
-        String getId() {
-                return String.valueOf(this.id);
+        private static String getId() {
+                return String.valueOf(id);
         }
 
 }
