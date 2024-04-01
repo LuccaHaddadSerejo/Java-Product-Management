@@ -15,24 +15,24 @@ public class Main {
                 ProductController controller = new ProductController();
                 try {
                         setId(id + 1);
-                        ProductModel newProduct = new ProductModel(getId());
+                        ProductModel productOne = new ProductModel(getId());
 
-                        newProduct.setName("Produto 1");
-                        newProduct.setPriceInCents(500);
-                        newProduct.setStock(25);
-                        controller.create(newProduct);
+                        productOne.setName("Produto 1");
+                        productOne.setPriceInCents(500);
+                        productOne.setStock(25);
+                        controller.create(productOne);
 
                         controller.read();
 
                         controller.retrievePrice(getId());
 
                         setId(id + 1);
-                        ProductModel novoProduto = new ProductModel(getId());
+                        ProductModel productTwo = new ProductModel(getId());
 
-                        novoProduto.setName("Produto 1");
-                        novoProduto.setPriceInCents(400);
-                        novoProduto.setStock(50);
-                        controller.create(novoProduto);
+                        productTwo.setName("Produto 1");
+                        productTwo.setPriceInCents(400);
+                        productTwo.setStock(50);
+                        controller.create(productTwo);
 
                         controller.read();
 
